@@ -1,0 +1,229 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Mulish', sans-serif;
+}
+
+:root {
+    font-size: 62.5%;
+    --color-gray: #F5F5F5;
+    --color-white: #ffff;
+    --color-text-1: #8D8D99;
+    --color-text-strong: #202024;
+    --color-border: #3D3D3D;
+    --color-tag: #202024;
+}
+
+.app{
+    display: grid;
+    grid-template-rows: max-content 1fr max-content;
+    height: 100vh;
+}
+
+.contaner{
+    padding: 1.6rem 11.2rem;
+    margin: 0 auto;
+    width: min(112rem, 100%);
+}
+
+header, nav, ul, li{
+    display: flex;
+    gap: 7rem;
+    align-items: center;
+    --move: -100%;
+    animation: move .8s;
+   
+}
+
+nav > img {
+    transition: 100ms;
+}
+
+nav > img:hover {
+    filter: contrast(50);
+}
+
+li{
+    color: var(--color-text-1);
+    list-style: none;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%;  
+    cursor: pointer;
+}
+
+li:active {
+    color: var(--color-text-strong);
+}
+
+form {
+    flex: 1;
+}
+
+.input-wrapper input {
+    padding: 1.2rem 1.6rem;
+    background-color: var(--color-gray);
+    border: none;
+    font-size: 1.6rem;
+    font-style: normal;
+    border-radius: .5rem;
+    line-height: 100%;
+    font-weight: 600;
+    width: 100%;
+    
+}
+
+.input-wrapper input::placeholder {
+    color: var(--color-border);
+    opacity: .35;
+
+
+}
+
+/*escondendo a label para acessibilidade 
+pois o placeholder não é acessível  */
+label {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+
+}   
+
+.avatar {
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 50%;
+    /*caso a foto esteja esticada essa propriedade reajusta a 
+    imagem de acordo com o tamanho da caixa ou largura especificada*/
+    object-fit: cover;
+
+    transition: 300ms ease-out;
+}
+
+.avatar:hover {
+    filter: saturate(150%);
+    transform: scale(1.1) rotate(2deg);
+}
+
+main {
+
+    background: var(--color-gray);
+    /*overflow-y: scroll; ←←←←← ativar se a area tiver maior que a viewport*/
+}
+
+
+/*galeria*/
+
+.contaner > h1 {
+    margin: 3.6rem 0;
+    animation: letter 2s;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.2rem;
+    margin-bottom: 6.4rem;
+}
+
+
+
+.itens {
+    background-color: var(--color-white);
+    border-radius: .8rem;
+    overflow: hidden;
+    animation: dalay 1s var(--dalay) backwards;
+    --dalay: 0.2s;
+}
+
+.itens img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    /*transition: propriedade duração delay timing-function*/
+    transition: all 1s ease-out;     
+}
+
+.detales{
+    padding: 2.2rem;
+    background-color: var(--color-white);
+    position: relative;
+    z-index: 1;
+}
+
+figcaption h1{
+    color: var(--color-tag);
+    line-height: 2rem;
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+
+.tag span{
+    display: inline-block;
+    margin-top: 1.2rem;
+    color: var(--color-tag);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    line-height: 1.8rem;
+    border-radius: .5rem;
+    padding: .4rem .7rem;
+    font-style: normal;
+    font-weight: 400;       
+    
+    border-radius: 5.673px;
+    background: #F5F5F5;
+}
+
+/*filter, transition and transform*/
+
+.itens img:hover {
+    filter: saturate(150%) brightness(1.1) hue-rotate(7deg);
+    transform: scale(1.1) rotate(-2deg);
+}
+
+footer {
+    --move: 100%;
+    animation: move 1s;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    text-align: center;
+}
+
+@keyframes move {
+
+    0% {
+        transform: translateY(var(--move));
+    }
+
+}
+
+@keyframes dalay {
+     0%{
+        opacity: 0;
+       transform: scale(0.5);
+     }
+
+     50%{
+        transform: scale(1.1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes letter {
+        0% {
+            letter-spacing: 25px;
+        }
+
+        50% {
+            letter-spacing: -2px;
+        }
+    }
+
